@@ -1,14 +1,17 @@
 from flask import Flask, request
-from flask.wrappers import Response
 from Data import data
 from Logic import salary
 from dotenv import load_dotenv
+from flask_cors import CORS
 import os
 from DTO import response, employeeSerializer
 
 load_dotenv()
 
 app = Flask(__name__)
+
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 app.config["DEBUG"] = os.getenv("DEBUG")
 api_data = os.getenv("API")

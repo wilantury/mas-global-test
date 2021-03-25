@@ -1,6 +1,6 @@
-from src.Logic import salary
-from src.tests.mocks import employee
-from src.DTO.employeeSerializer import EmployeeSerializer 
+from ..Logic import salary
+from .mocks import employee
+from ..DTO.employeeSerializer import EmployeeSerializer 
 
 salary_calc = salary.SalaryCal()
 employee_serializer = EmployeeSerializer()

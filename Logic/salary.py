@@ -1,20 +1,17 @@
 class SalaryCal:
-
+    """Calc the salary of employees.
+       their salary depend of a contract type:
+       - Hourly salary
+       - Monthly salary
+    """
     def calculate(self, employee, contract_type_name):
         salary_calculator = self._get_salary(contract_type_name)
         return salary_calculator(employee)
-    
+
     def _get_salary(self, contract_type):
         if contract_type == "HourlySalaryEmployee":
-            return self._salary_calc_hourly_employee
+            return lambda employee: employee['hourlySalary'] * 12 * 120
         elif contract_type == "MonthlySalaryEmployee":
-            return self._salary_calc_monthly_employee
+            return lambda employee: employee['monthlySalary'] * 12
         else:
             raise ValueError(contract_type)
-    
-    def _salary_calc_hourly_employee(self, employee):
-        return employee['hourlySalary'] * 12 * 120
-    
-    def _salary_calc_monthly_employee(self, employee):
-        return employee['monthlySalary'] * 12
-
